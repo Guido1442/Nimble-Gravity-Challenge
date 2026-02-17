@@ -33,8 +33,7 @@ export const SubmitForm = ({ positionTitle, baseURL, datosCandidato }: any) => {
                 setSuccess(true);
                 setRepoUrl("");
             } else {
-                const errorText = await response.text();
-                setError("Error al enviar los datos " + errorText);
+                setError("Error al enviar los datos");
             }
         } catch (error) {
             setError("Error de red. Intenta más tarde.");
