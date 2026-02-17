@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./SubmitForm.css";
 
 export const SubmitForm = ({ positionTitle, baseURL, datosCandidato }: any) => {
     const [repoUrl, setRepoUrl] = useState("");
@@ -8,7 +9,7 @@ export const SubmitForm = ({ positionTitle, baseURL, datosCandidato }: any) => {
     };
 
     const handleClick = async (datosCandidato:any) => {
-        if (!(repoUrl.trim() === "")) {
+        if (!(repoUrl.trim().startsWith("https://github.com/"))) {
             try {
                 const datosActualizados = { ...datosCandidato, repoUrl };
                 const response = await fetch(`${baseURL}/api/candidate/apply-to-job`, {
@@ -49,9 +50,6 @@ export const SubmitForm = ({ positionTitle, baseURL, datosCandidato }: any) => {
                     Submit
                 </button>
             </aside>
-            
-
-
         </article>
     )
 }

@@ -1,5 +1,6 @@
 import { SubmitForm } from "./SubmitForm";
 import { useState, useEffect } from 'react';
+import "./SubmitForm.css"
 
 interface TipoDatosCandidato {
   uuid: string;
@@ -52,18 +53,22 @@ export function App() {
     }, []);
     
     return (
-        <div>
-            {jobs.map((job) => {
-                datosCandidato.jobId = job.id;
-                return (
-                    <SubmitForm 
-                        positionTitle={job.title} 
-                        baseURL={base_URL} 
-                        datosCandidato={datosCandidato}
-                        key={job.id} 
-                    />  
-                )
-            })}
+        <div className="app-container">
+            <h1 className="app-title">Nimble Gravity Challenge</h1>
+            <h2 className="app-subtitle">Guido Cardozo</h2>
+            <div className="submit-forms-container">
+                {jobs.map((job) => {
+                    datosCandidato.jobId = job.id;
+                    return (
+                        <SubmitForm 
+                            positionTitle={job.title} 
+                            baseURL={base_URL} 
+                            datosCandidato={datosCandidato}
+                            key={job.id} 
+                        />  
+                    )
+                })}
+            </div>
         </div>
     );
 }
