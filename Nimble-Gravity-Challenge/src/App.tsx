@@ -44,7 +44,7 @@ export function App() {
                     datosCandidato.uuid = dataCandidato.uuid;
                     datosCandidato.candidateId = dataCandidato.candidateId;
                     datosCandidato.applicationId = dataCandidato.applicationId;
-                    console.log(dataCandidato);
+                    
                 } else {
                     setError('Error al obtener datos del candidato');
                     setLoading(false);

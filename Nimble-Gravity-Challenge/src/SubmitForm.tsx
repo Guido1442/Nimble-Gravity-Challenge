@@ -21,7 +21,6 @@ export const SubmitForm = ({ positionTitle, baseURL, datosCandidato }: any) => {
         setLoading(true);
         try {
             const datosActualizados = { ...datosCandidato, repoUrl };
-            console.log(datosActualizados);
             const response = await fetch(`${baseURL}/api/candidate/apply-to-job`, {
                 method: 'POST',
                 headers: {
