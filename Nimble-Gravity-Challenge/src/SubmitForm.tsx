@@ -21,6 +21,7 @@ export const SubmitForm = ({ positionTitle, baseURL, datosCandidato }: any) => {
         setLoading(true);
         try {
             const datosActualizados = { ...datosCandidato, repoUrl };
+            console.log(datosActualizados);
             const response = await fetch(`${baseURL}/api/candidate/apply-to-job`, {
                 method: 'POST',
                 headers: {
@@ -32,7 +33,8 @@ export const SubmitForm = ({ positionTitle, baseURL, datosCandidato }: any) => {
                 setSuccess(true);
                 setRepoUrl("");
             } else {
-                setError("Error al enviar los datos. Intenta de nuevo.");
+                const errorText = await response.text();
+                setError("Error al enviar los datos " + errorText);
             }
         } catch (error) {
             setError("Error de red. Intenta más tarde.");

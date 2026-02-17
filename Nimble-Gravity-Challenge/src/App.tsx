@@ -7,6 +7,7 @@ interface TipoDatosCandidato {
   jobId: string;
   candidateId: string; 
   repoUrl: string;
+  applicationId: string
 }
 
 interface Job {
@@ -18,7 +19,8 @@ const datosCandidato: TipoDatosCandidato = {
   uuid: "",
   jobId: "",
   candidateId: "",
-  repoUrl: ""
+  repoUrl: "",
+  applicationId: ""
 };
 
 const base_URL = "https://botfilter-h5ddh6dye8exb7ha.centralus-01.azurewebsites.net";
@@ -41,6 +43,8 @@ export function App() {
                     const dataCandidato = await resCandidato.json();
                     datosCandidato.uuid = dataCandidato.uuid;
                     datosCandidato.candidateId = dataCandidato.candidateId;
+                    datosCandidato.applicationId = dataCandidato.applicationId;
+                    console.log(dataCandidato);
                 } else {
                     setError('Error al obtener datos del candidato');
                     setLoading(false);
@@ -79,7 +83,13 @@ export function App() {
                             <SubmitForm 
                                 positionTitle={job.title} 
                                 baseURL={base_URL} 
-                                datosCandidato={datosCandidato}
+                                datosCandidato={{
+                                    uuid: datosCandidato.uuid,
+                                    jobId: job.id,
+                                    candidateId: datosCandidato.candidateId,
+                                    repoUrl: "",
+                                    applicationId: datosCandidato.applicationId,
+                                }}
                                 key={job.id} 
                             />  
                         )
